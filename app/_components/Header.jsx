@@ -11,59 +11,38 @@ const Header = () => {
                 <div className="flex flex-1 items-center justify-end md:justify-between">
                     <nav aria-label="Global" className="hidden md:block">
                         <ul className="flex items-center gap-6 text-sm">
-                        <li>
-                            <a
-                            className="text-gray-500 transition hover:text-gray-500/75 dark:text-white dark:hover:text-white/75"
-                            href="#"
-                            >
-                            About
-                            </a>
-                        </li>
-
-                        <li>
-                            <a
-                            className="text-gray-500 transition hover:text-gray-500/75 dark:text-white dark:hover:text-white/75"
-                            href="#"
-                            >
-                            Careers
-                            </a>
-                        </li>
-
-                        <li>
-                            <a
-                            className="text-gray-500 transition hover:text-gray-500/75 dark:text-white dark:hover:text-white/75"
-                            href="#"
-                            >
-                            History
-                            </a>
-                        </li>
-
-                        <li>
-                            <a
-                            className="text-gray-500 transition hover:text-gray-500/75 dark:text-white dark:hover:text-white/75"
-                            href="#"
-                            >
-                            Services
-                            </a>
-                        </li>
-
-                        <li>
-                            <a
-                            className="text-gray-500 transition hover:text-gray-500/75 dark:text-white dark:hover:text-white/75"
-                            href="#"
-                            >
-                            Projects
-                            </a>
-                        </li>
-
-                        <li>
-                            <a
-                            className="text-gray-500 transition hover:text-gray-500/75 dark:text-white dark:hover:text-white/75"
-                            href="#"
-                            >
-                            Blog
-                            </a>
-                        </li>
+                            <li>
+                                <a
+                                className="text-gray-500 transition hover:text-gray-500/75 dark:text-white dark:hover:text-white/75"
+                                href="#"
+                                >
+                                Home
+                                </a>
+                            </li>
+                            <li>
+                                <a
+                                className="text-gray-500 transition hover:text-gray-500/75 dark:text-white dark:hover:text-white/75"
+                                href="#"
+                                >
+                                Upload
+                                </a>
+                            </li>
+                            <li>
+                                <a
+                                className="text-gray-500 transition hover:text-gray-500/75 dark:text-white dark:hover:text-white/75"
+                                href="#"
+                                >
+                                About Us
+                                </a>
+                            </li>
+                            <li>
+                                <a
+                                className="text-gray-500 transition hover:text-gray-500/75 dark:text-white dark:hover:text-white/75"
+                                href="#"
+                                >
+                                Contact Us
+                                </a>
+                            </li>
                         </ul>
                     </nav>
 
@@ -73,14 +52,7 @@ const Header = () => {
                             className="block rounded-md bg-primary px-5 py-2.5 text-sm font-medium text-white transition hover:bg-blue-700"
                             href="#"
                         >
-                            Login
-                        </a>
-
-                        <a
-                            className="hidden rounded-md bg-gray-100 px-5 py-2.5 text-sm font-medium text-teal-600 transition hover:text-teal-600/75 sm:block dark:bg-gray-800 dark:text-white dark:hover:text-white/75"
-                            href="#"
-                        >
-                            Register
+                            Get Started
                         </a>
                         </div>
 

@@ -1,7 +1,7 @@
 "use client"
 import React from 'react'
 import Uploadform from './_components/Uploadform'
-import {getStorage} from 'firebase/storage'
+import {getDownloadURL, getStorage, ref, uploadBytesResumable} from 'firebase/storage'
 import { app } from '@/firebaseConfig'
 
 const page = () => {
@@ -9,9 +9,22 @@ const page = () => {
   const storage = getStorage(app);
 
   const uploadFile = (file) => {
+    
+    const storageRef = ref(storage, 'file/'+file?.name);
+    const uploadTask = uploadBytesResumable(storageRef, file, file.type);
 
+    uploadTask.on('state_changed',
+      (snapshot)=>{
+        const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+        console.log(`Upload = ${progress} % done`);
+
+        progress == 100 && getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+          console.log('File available at', downloadURL);
+        });
+      },
+    )
   }
-  
+
   return (
     <div className='p-5 px-8 md:px-28'>
       <h2 className='text-[20px] text-center m-4'>

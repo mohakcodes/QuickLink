@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import AlertMessage from './AlertMessage';
 import PreviewFile from './PreviewFile';
+import ProgressBar from './ProgressBar';
+import ToastMessage from './ToastMessage';
 
-const UploadForm = ({uploadTheFile}) => {
+const UploadForm = ({uploadTheFile,progress,setProgress}) => {
 
   const [file, setFile] = useState();
   const [errorMsg, setErrorMsg] = useState();
@@ -19,7 +21,7 @@ const UploadForm = ({uploadTheFile}) => {
 
   return (
     <div className="text-center">
-      <div className="flex items-center justify-center w-full">
+      <div className="flex items-center justify-center w-full" onClick={()=>setProgress()}>
         <label
           htmlFor="dropzone-file"
           className="flex flex-col items-center justify-center w-full h-64 border-2 border-blue-700 border-dashed rounded-xl cursor-pointer bg-gray-300"
@@ -58,13 +60,24 @@ const UploadForm = ({uploadTheFile}) => {
       </div>
       {errorMsg ? <AlertMessage msg={errorMsg}/> : null}
       {file ? <PreviewFile file={file} removeFile={()=>setFile()}/> : null}
-      <button
-        disabled={!file}
-        onClick={()=>uploadTheFile(file)}
-        className="disabled:bg-gray-500 disabled:hover:bg-gray-600 p-2 bg-primary hover:bg-blue-700 text-white w-1/3 rounded-lg mt-5"
-      >
-        Upload
-      </button>
+    
+      {
+        progress >= 0 && file ? (
+          <>
+            {
+              progress === 100 ? <ToastMessage setFile={setFile}/> : <ProgressBar progress={progress}/>
+            }
+          </>
+        ) : (
+          <button
+            disabled={!file}
+            onClick={()=>uploadTheFile(file)}
+            className="disabled:bg-gray-500 disabled:hover:bg-gray-600 p-2 bg-primary hover:bg-blue-700 text-white w-1/3 rounded-lg mt-5"
+          >
+            Upload
+          </button>
+        )
+      }
     </div>
   );
 };

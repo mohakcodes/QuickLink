@@ -31,7 +31,7 @@ const sidenav = () => {
   return (
     <div className='shadow-sm'>
         <div className='p-2 border-b'>
-            <Image src='/logo.svg' width={64} height={64}/>
+            <Image src='/logo.svg' alt='img' width={64} height={64}/>
         </div>
         <div className='flex flex-col float-left w-full'>
         {
@@ -39,6 +39,7 @@ const sidenav = () => {
                 <button
                     className={`flex gap-2 p-4 px-6 ${activeIdx===idx ? 'bg-blue-800' : 'text-white'}`}
                     onClick={()=>setActiveIdx(idx)}
+                    key={idx}
                 >
                     <item.icon/>
                     <h2>{item.name}</h2>

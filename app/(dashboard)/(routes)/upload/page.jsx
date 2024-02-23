@@ -8,18 +8,23 @@ import { useUser } from '@clerk/nextjs'
 // to make collections in Firestore
 import {doc, getFirestore, setDoc} from 'firebase/firestore'
 import { getRandomString } from '@/app/_utils/GetRandomString'
+import { useRouter } from 'next/navigation'
 
 const page = () => {
 
   const {user} = useUser();
   const [progress, setProgress] = useState();
-  const [uploadCompleted,setUploadCompleted] = useState(false);
+  const [uploadCompleted, setUploadCompleted] = useState(false);
+  const [fileDocId, setFileDocId] = useState();
+
+  const router = useRouter();
 
   const storage = getStorage(app);
   const db = getFirestore(app);
 
   const saveInfo = async(file,downloadURL) => {
-    await setDoc(doc(db, "uploadedFile", getRandomString().toString()),{
+    const docId = getRandomString().toString();
+    await setDoc(doc(db, "uploadedFile", docId),{
       fileName:file.name,
       fileSize:file.size,
       fileType:file.type,
@@ -27,9 +32,10 @@ const page = () => {
       userEmail:user.primaryEmailAddress.emailAddress,
       userName:user.fullName,
       password:'',
-      id:getRandomString(),
+      id:docId,
       shortURL:process.env.NEXT_PUBLIC_BASE_URL+getRandomString(),
     })
+    setFileDocId(docId);
   }
 
   const uploadFile = (file) => {
@@ -66,12 +72,12 @@ const page = () => {
     },2000)
   },[progress==100])
 
-  // useEffect(()=>{
-  //   uploadCompleted && setTimeout(()=>{
-  //     setUploadCompleted(false);
-  //     window.location.reload();
-  //   },2000)
-  // },[uploadCompleted==true])
+  useEffect(()=>{
+    (uploadCompleted && fileDocId) && setTimeout(()=>{
+      setUploadCompleted(false);
+      router.push('/file-preview/'+fileDocId);
+    },100)
+  },[uploadCompleted==true , fileDocId])
 
   return (
     <div className='p-5 px-8 md:px-28'>

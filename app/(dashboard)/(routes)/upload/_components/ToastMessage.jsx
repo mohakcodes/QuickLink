@@ -1,9 +1,7 @@
 import React from 'react'
 
 const ToastMessage = ({setFile}) => {
-  const resetFn = () => {
-    setFile();
-  }
+    
   return (
     <div>
         <div
@@ -32,13 +30,13 @@ const ToastMessage = ({setFile}) => {
             <strong className="block font-medium text-gray-900 dark:text-white"> Upload Successful </strong>
 
             <p className="mt-1 text-sm text-gray-700 dark:text-gray-200">
-                Effortlessly share URL in real-time
+                Wait... Redirecting to file preview
             </p>
             </div>
 
             <button
                 className="text-gray-500 transition hover:text-gray-600 dark:text-gray-400 dark:hover:text-gray-500"
-                onClick={()=>resetFn()}
+                onClick={()=>setFile()}
             >
             <span className="sr-only">Dismiss popup</span>
 

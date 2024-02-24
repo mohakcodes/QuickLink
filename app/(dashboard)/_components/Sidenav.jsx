@@ -1,6 +1,6 @@
 "use client"
 import React, { useState } from 'react'
-import {File, Shield, Upload} from 'lucide-react'
+import {File, Upload} from 'lucide-react'
 import Image from 'next/image'
 
 const sidenav = () => {
@@ -8,22 +8,16 @@ const sidenav = () => {
   const menuList = [
     {
         id:1,
-        name:'Upload',
-        icon:Upload,
-        path:'upload',
-    },
-    {
-        id:2,
         name:'Files',
         icon:File,
         path:'files',
     },
     {
-        id:3,
-        name:'Upgrade',
-        icon:Shield,
-        path:'upgrade',
-    },
+        id:2,
+        name:'Upload',
+        icon:Upload,
+        path:'upload',
+    }
   ]
 
   const [activeIdx,setActiveIdx] = useState(0);

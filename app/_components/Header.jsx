@@ -14,7 +14,7 @@ const Header = () => {
                             <li>
                                 <a
                                 className="text-gray-500 transition hover:text-gray-500/75 dark:text-white dark:hover:text-white/75"
-                                href="#"
+                                href="/"
                                 >
                                 Home
                                 </a>
@@ -22,7 +22,7 @@ const Header = () => {
                             <li>
                                 <a
                                 className="text-gray-500 transition hover:text-gray-500/75 dark:text-white dark:hover:text-white/75"
-                                href="#"
+                                href="/upload"
                                 >
                                 Upload
                                 </a>
@@ -30,19 +30,12 @@ const Header = () => {
                             <li>
                                 <a
                                 className="text-gray-500 transition hover:text-gray-500/75 dark:text-white dark:hover:text-white/75"
-                                href="#"
+                                href="https://github.com/mohakcodes"
                                 >
-                                About Us
+                                Connect
                                 </a>
                             </li>
-                            <li>
-                                <a
-                                className="text-gray-500 transition hover:text-gray-500/75 dark:text-white dark:hover:text-white/75"
-                                href="#"
-                                >
-                                Contact Us
-                                </a>
-                            </li>
+                            
                         </ul>
                     </nav>
 

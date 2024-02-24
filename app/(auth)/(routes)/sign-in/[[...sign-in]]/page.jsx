@@ -1,6 +1,6 @@
 "use client"
 
-import { useDescription } from "@/app/_utils/Constant";
+import { useDescription } from "../../../../_utils/Constant";
 import { SignIn } from "@clerk/nextjs";
 import Image from "next/image";
  

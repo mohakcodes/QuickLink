@@ -38,14 +38,14 @@ const page = ({params}) => {
   }
   
   return (
-    <div className='py-10 px-10'>
-        <Link href='/upload' className='flex gap-3'>
-          <ArrowLeftSquare/> Go to Upload
-        </Link>
-        <div className='grid grid-cols-1 md:grid-cols-2 mt-5'>
-          <FileInfo file={file}/>
-          <FileShareForm file={file} onPassSave={(pass)=>onPasswordSave(pass)}/>
-        </div>
+    <div style={{ background: 'rgb(18,43,61)', background: 'linear-gradient(90deg, rgba(18,43,61,1) 0%, rgba(4,0,37,1) 50%, rgba(18,43,61,1) 100%)' }} className='min-h-[88vh] py-10 px-10'>
+      <Link href='/upload' className='flex gap-3'>
+        <ArrowLeftSquare/> Go to Upload
+      </Link>
+      <div className='grid grid-cols-1 md:grid-cols-2 mt-5'>
+        <FileInfo file={file}/>
+        <FileShareForm file={file} onPassSave={(pass)=>onPasswordSave(pass)}/>
+      </div>
     </div>
   )
 }

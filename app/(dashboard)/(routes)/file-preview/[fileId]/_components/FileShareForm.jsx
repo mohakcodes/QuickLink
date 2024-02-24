@@ -8,9 +8,20 @@ const FileShareForm = ({file,onPassSave}) => {
 
   const [isPassEnable, setIsPassEnable] = useState(false);
   const [pass,setPass] = useState('');
-  const [copied,setCopied] = useState(false);
   const [email,setEmail] = useState();
   const {user} = useUser();
+
+  const [copied,setCopied] = useState(false);
+  const [passSaved,setPassSaved] = useState(false);
+  const [sentMail,setSentMail] = useState(false);
+
+  const handlePassClick = () => {
+    setPassSaved(true);
+    setTimeout(()=>{
+        setPassSaved(false);
+    },2000)
+    onPassSave(pass);
+  }
 
   const handleCopyClick = () => {
     setCopied(true);
@@ -26,12 +37,16 @@ const FileShareForm = ({file,onPassSave}) => {
         fileName:file.fileName,
         fileSize:file.fileSize,
         fileType:file.fileType,
-        shortURL:file.shortURL,
+        shortURL:`${process.env.NEXT_PUBLIC_BASE_URL}save/${file.id}`,
         fileId:file.id,
     }
     GlobalApi.SendEmail(data).then(resp=>{
         console.log(resp);
     })
+    setSentMail(true);
+    setTimeout(()=>{
+        setSentMail(false);
+    },2000)
   }
 
   return file && (
@@ -41,11 +56,11 @@ const FileShareForm = ({file,onPassSave}) => {
             <div className='flex gap-5 p-2 border rounded-md justify-between'>
                 <input
                     type='text'
-                    value={file?.shortURL}
+                    value={`${process.env.NEXT_PUBLIC_BASE_URL}save/${file.id}`}
                     disabled
                     className='disabled:text-gray-400 bg-transparent outline-none w-full'
                 />
-                <CopyToClipboard text={file?.shortURL} onCopy={handleCopyClick}>
+                <CopyToClipboard text={`${process.env.NEXT_PUBLIC_BASE_URL}save/${file.id}`} onCopy={handleCopyClick}>
                     <Copy className='text-gray-400 hover:text-gray-600 cursor-pointer' />
                 </CopyToClipboard>
             </div>
@@ -67,10 +82,11 @@ const FileShareForm = ({file,onPassSave}) => {
                     <button 
                         className='p-2 bg-primary text-white rounded-md disabled:bg-gray-500 hover:bg-blue-600'
                         disabled={pass?.length <= 3}
-                        onClick={()=>onPassSave(pass)}
+                        onClick={()=>handlePassClick()}
                     >
                         Save
                     </button>
+                    {passSaved && <span className="text-green-500">Password Set!</span>}
                 </div> : null
             }
             <div className='border rounded-md p-3 mt-5'>
@@ -89,6 +105,7 @@ const FileShareForm = ({file,onPassSave}) => {
                 >
                     Send E-Mail
                 </button>
+                {sentMail && <span className="text-green-500">Sent to Mail!</span>}
             </div>
         </div>
     </div>

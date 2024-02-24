@@ -33,7 +33,7 @@ const page = () => {
       userName:user.fullName,
       password:'',
       id:docId,
-      shortURL:process.env.NEXT_PUBLIC_BASE_URL+docId,
+      shortURL:`${process.env.NEXT_PUBLIC_BASE_URL}save/${docId}`,
     })
     setFileDocId(docId);
   }
@@ -79,12 +79,14 @@ const page = () => {
   },[uploadCompleted==true , fileDocId])
 
   return (
-    <div className='p-5 px-8 md:px-28'>
-      <h2 className='text-[20px] text-center m-4'>
-        <strong className='text-red-500'>Upload</strong> your files & <strong className='text-cyan-400'>Share</strong> to all
-      </h2>
-      <Uploadform uploadTheFile={(file)=>uploadFile(file)} progress={progress} setProgress={setProgress}/>
-    </div>
+    <div style={{ background: 'rgb(0, 4, 80)', background: 'linear-gradient(90deg, rgba(0,4,80,1) 0%, rgba(2,0,36,1) 95%)' }} className='flex items-center justify-center min-h-[88vh]'>
+      <div className='p-5 px-8 md:px-28'>
+        <h2 className='text-[20px] text-center m-4'>
+          <strong className='text-red-500'>Upload</strong> your files & <strong className='text-cyan-400'>Share</strong> to all
+        </h2>
+        <Uploadform uploadTheFile={(file) => uploadFile(file)} progress={progress} setProgress={setProgress}/>
+      </div>
+  </div>
   )
 }
 

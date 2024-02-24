@@ -1,4 +1,4 @@
-import GlobalApi from '@/app/_utils/GlobalApi'
+import GlobalApi from '../../../../../_utils/GlobalApi'
 import { useUser } from '@clerk/nextjs'
 import { Copy, CopyIcon } from 'lucide-react'
 import React, { useState } from 'react'

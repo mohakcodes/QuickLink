@@ -21,20 +21,13 @@ const EmailTemp = ({res}) => {
       <Preview>You recent activity</Preview>
       <Body style={main}>
         <Container>
-          <Section style={logo}>
-            <Img src="/logo.svg" />
+          <Section>
+            <Img src="https://i.postimg.cc/52LQqH47/quicklink.png" />
           </Section>
 
           <Section style={content}>
-            <Row>
-              <Img
-                style={image}
-                width={620}
-                src="/logo.svg"
-              />
-            </Row>
 
-            <Row style={{ ...boxInfos, paddingBottom: "0" }}>
+            <Row style={{ ...boxInfos, paddingBottom: "0", backgroundColor:"#ddc9ff" }}>
               <Column>
                 <Heading
                   style={{
@@ -85,19 +78,12 @@ const EmailTemp = ({res}) => {
             </Row>
             <Row style={{ ...boxInfos, paddingTop: "0" }}>
               <Column style={containerButton} colSpan={2}>
-                <Button style={button}>
-                  Download
-                </Button>
+                <a href={`http://localhost:3000/send/`} style={{ textDecoration: 'none' }}>Download Here</a>
+                  <Button style={button} href={`http://localhost:3000/send/`}>
+                    Download
+                  </Button>
               </Column>
             </Row>
-          </Section>
-
-          <Section style={containerImageFooter}>
-            <Img
-              style={image}
-              width={620}
-              src="/logo.svg"
-            />
           </Section>
 
           <Text

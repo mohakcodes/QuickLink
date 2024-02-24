@@ -2,12 +2,12 @@
 import React, { useEffect, useState } from 'react'
 import Uploadform from './_components/Uploadform'
 import {getDownloadURL, getStorage, ref, uploadBytesResumable} from 'firebase/storage'
-import { app } from '@/firebaseConfig'
+import { app } from '../../../../firebaseConfig'
 import { useUser } from '@clerk/nextjs'
 
 // to make collections in Firestore
 import {doc, getFirestore, setDoc} from 'firebase/firestore'
-import { getRandomString } from '@/app/_utils/GetRandomString'
+import {getRandomString} from '../../../_utils/GetRandomString'
 import { useRouter } from 'next/navigation'
 
 const page = () => {
@@ -33,7 +33,7 @@ const page = () => {
       userName:user.fullName,
       password:'',
       id:docId,
-      shortURL:process.env.NEXT_PUBLIC_BASE_URL+getRandomString(),
+      shortURL:process.env.NEXT_PUBLIC_BASE_URL+docId,
     })
     setFileDocId(docId);
   }
@@ -47,20 +47,19 @@ const page = () => {
         const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
         console.log(`Upload = ${progress} % done`);
         setProgress(progress);
-
-        if(progress === 100){
-          getDownloadURL(uploadTask.snapshot.ref)
-            .then((downloadURL) => {
-              console.log('File available at', downloadURL);
-              saveInfo(file,downloadURL);
-            })
-            .catch((err)=>{
-              console.error('Error getting download URL:', err);
-            })
-        }
       },
       (err) => {
         console.error('Upload error:', err);
+      },
+      ()=>{
+        getDownloadURL(uploadTask.snapshot.ref)
+          .then((downloadURL) => {
+            console.log('File available at', downloadURL);
+            saveInfo(file,downloadURL);
+          })
+          .catch((err)=>{
+            console.error('Error getting download URL:', err);
+          })
       }
     )
   }

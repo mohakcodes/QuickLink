@@ -78,8 +78,7 @@ const EmailTemp = ({res}) => {
             </Row>
             <Row style={{ ...boxInfos, paddingTop: "0" }}>
               <Column style={containerButton} colSpan={2}>
-                <a href={`http://localhost:3000/send/`} style={{ textDecoration: 'none' }}>Download Here</a>
-                  <Button style={button} href={`http://localhost:3000/send/`}>
+                  <Button style={button} href={`http://localhost:3000/save/${res.fileId}`}>
                     Download
                   </Button>
               </Column>

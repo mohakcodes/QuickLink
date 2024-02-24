@@ -27,6 +27,7 @@ const FileShareForm = ({file,onPassSave}) => {
         fileSize:file.fileSize,
         fileType:file.fileType,
         shortURL:file.shortURL,
+        fileId:file.id,
     }
     GlobalApi.SendEmail(data).then(resp=>{
         console.log(resp);

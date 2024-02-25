@@ -52,7 +52,7 @@ const Page = () => {
                   Welcome to QuickLink
                 </h1>
 
-                <p className="mt-4 leading-relaxed text-gray-500 dark:text-gray-400">
+                <p className="my-4 leading-relaxed text-gray-500 dark:text-gray-400">
                   {desc}
                 </p>
               </div>
